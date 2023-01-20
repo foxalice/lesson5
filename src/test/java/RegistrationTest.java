@@ -8,7 +8,7 @@ import static com.codeborne.selenide.Selectors.*;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.Selenide.executeJavaScript;
 
-public class registrationTest {
+public class RegistrationTest {
 
     @BeforeAll
     static void beforeAll() {
@@ -18,7 +18,7 @@ public class registrationTest {
     }
 
     @Test
-    void RegistrationTestSuccessful() {
+    void registrationTestSuccessful() {
 
         open("/automation-practice-form");
         $(".practice-form-wrapper").shouldHave(text("Student Registration Form"));
