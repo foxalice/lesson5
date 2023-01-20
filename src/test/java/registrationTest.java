@@ -6,13 +6,15 @@ import static com.codeborne.selenide.Condition.appear;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.*;
 import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.Selenide.executeJavaScript;
 
-public class RegistrationTest {
+public class registrationTest {
 
     @BeforeAll
     static void beforeAll() {
         Configuration.baseUrl = "https://demoqa.com";
         Configuration.browserSize = "1920x1080";
+        Configuration.browserPosition = "0x0";
     }
 
     @Test
@@ -39,10 +41,17 @@ public class RegistrationTest {
         $("#hobbiesWrapper").$(byText("Sports")).click();
         $("#uploadPicture").uploadFromClasspath("img/1.png");
         $("#currentAddress").setValue("Some address 1");
+
+        //не помещается в экран форма - прокрутить до поля stateCity-wrapper
+        $("#stateCity-wrapper").scrollIntoView(true);
+
         $("#state").click();
         $("#stateCity-wrapper").$(byText("NCR")).click();
         $("#city").click();
         $("#stateCity-wrapper").$(byText("Delhi")).click();
+
+        //не помещается в экран форма - прокрутить до поля конца страницы
+        executeJavaScript("window.scrollTo(0, document.body.scrollHeight)");
         $("#submit").click();
 
         // проверка
