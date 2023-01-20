@@ -18,7 +18,7 @@ public class registrationTest {
     }
 
     @Test
-    void registrationTestSuccessful() {
+    void RegistrationTestSuccessful() {
 
         open("/automation-practice-form");
         $(".practice-form-wrapper").shouldHave(text("Student Registration Form"));
@@ -57,8 +57,17 @@ public class registrationTest {
         // проверка
         $(".modal-dialog").should(appear);
         $("#example-modal-sizes-title-lg").shouldHave(text("Thanks for submitting the form"));
-        $(".table-responsive").shouldHave(text("Alexandra"), text("Saveleva"),
-                                                            text("alex@gmail.com"), text("1234567890"));
-        sleep(5000);
+        $(".table-responsive").shouldHave(
+                text("Alexandra"),
+                text("Saveleva"),
+                text("alex@gmail.com"),
+                text("1234567890"),
+                text("05 March,2009"),
+                text("Economics"),
+                text("Sports"),
+                text("1.png"),
+                text("Some address 1"),
+                text("NCR Delhi")
+                );
     }
 }
